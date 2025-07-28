@@ -1,0 +1,15 @@
+{
+    "name": "Coffee 101",
+    "short_name": "Coffee 101",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#462123",
+    "theme_color": "#eedec0",
+    "icons": [
+        {
+            "src": "images/coffee_chai_logo.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        }
+    ]
+}
