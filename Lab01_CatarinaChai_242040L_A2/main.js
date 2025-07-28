@@ -13,7 +13,6 @@ const enterPg = document.querySelector("aside");
 const formBody = document.querySelector("form");
 const suggestionInput = document.querySelectorAll("form>input")[0];
 const emailInput = document.querySelectorAll("form>input")[1];
-const formSubmit = document.querySelectorAll("form>input")[2];
 var suggestions = [];
 
 //for bgm
@@ -150,6 +149,7 @@ function showOtherSection(sectionID, idName, displayType, buttonSide) {
 }
 
 function fullScreen() {
+    console.log("shld be full screen");
     if (fullScreenThis.requestFullscreen) {
         fullScreenThis.requestFullscreen();
     }
@@ -698,7 +698,10 @@ for (var i = 0; i < rows; i++) {
 // This creates a 4x4 grid filled with true
 
 if (document.documentElement.clientWidth <= 800) {
-    fullScreen();
+    document.addEventListener('touchstart', function(){
+        fullScreen();
+    });
+    
     zoomIn_OutButton.style.display = "none";
     //arabica beans
     for (let i = 0; i < arabicaContent.length; i++) {
