@@ -698,6 +698,7 @@ for (var i = 0; i < rows; i++) {
 // This creates a 4x4 grid filled with true
 
 if (document.documentElement.clientWidth <= 800) {
+    fullScreen();
     zoomIn_OutButton.style.display = "none";
     //arabica beans
     for (let i = 0; i < arabicaContent.length; i++) {
