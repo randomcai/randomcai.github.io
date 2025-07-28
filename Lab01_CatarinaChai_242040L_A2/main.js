@@ -701,8 +701,8 @@ for (var i = 0; i < rows; i++) {
 // This creates a 4x4 grid filled with true
 
 if (document.documentElement.clientWidth <= 800) {
-    document.addEventListener("touchstart", fullScreen, { once: true });
-    document.addEventListener("click", fullScreen, { once: true });
+    document.addEventListener("touchstart", function () {fullScreen();});
+    document.addEventListener("click", function () {fullScreen();});
     zoomIn_OutButton.style.display = "none";
     //arabica beans
     for (let i = 0; i < arabicaContent.length; i++) {
