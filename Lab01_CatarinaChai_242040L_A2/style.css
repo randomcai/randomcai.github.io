@@ -1,16 +1,13 @@
 /*=======================
          fonts
 =======================*/
-
 @font-face {
     font-family: Kind_Avenue;
-    /* src: url("../fonts/kind_avenue.ttf") format('truetype'); */
     src: url("fonts/kind_avenue.ttf") format('truetype');
 }
 
 @font-face {
     font-family: Sans_Font;
-    /* src: url("../fonts/balsamiq_sans_bold.woff2") format('woff2'); */
     src: url("fonts/balsamiq_sans_bold.woff2") format('woff2');
 }
 
@@ -21,7 +18,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    /* background-image: url('../images/background_main.jpg'); */
     background-image: url('images/background_main.jpg');
 }
 
@@ -114,7 +110,7 @@ body>aside>div>button {
     max-height: none;
 }
 
-/* YES stays fixed */
+/* YES button stays fixed */
 #yes {
     left: 10%;
     bottom: 2.5%;
@@ -143,18 +139,12 @@ button {
     font-size: 2.5vw;
 }
 
-#menu button,
-footer button,
-#zoomIn_Out,
-#hambugerMenu,
-body>div:nth-of-type(2)>div button,
-#beans button,
-#musicBar,
-#cafes button,
-#game button:not(#game>div:nth-last-of-type(1)>button) {
+#menu button, footer button, #zoomIn_Out, #hambugerMenu, body>div:nth-of-type(2)>div button, #beans button,
+#musicBar, #cafes button, #game button:not(#game>div:nth-last-of-type(1)>button) {
     min-width: fit-content;
     max-height: 100%;
     background-color: transparent;
+    /* transparent background*/
 }
 
 /*============================
@@ -170,6 +160,7 @@ footer {
     padding-top: 1rem;
 }
 
+/* specific grid pos */
 footer>div:nth-of-type(2) {
     grid-column: 2;
     grid-row: 1/span 2;
@@ -214,6 +205,7 @@ footer button {
     font-size: 1vw;
 }
 
+/* nav for diff page of the website*/
 footer button:nth-of-type(1) {
     grid-row: 1;
 }
@@ -230,6 +222,7 @@ footer button:nth-of-type(4) {
     grid-row: 4;
 }
 
+/* form */
 footer div:nth-last-of-type(1) {
     grid-row: 1/span 2;
     grid-column: 4;
@@ -254,15 +247,17 @@ footer div:nth-last-of-type(1)>form>input {
 footer div:nth-last-of-type(1)>form input::placeholder {
     /* change placeholer color */
     color: #eedec0;
-    opacity: 1; 
+    opacity: 1;
     padding-left: 0.5rem;
 }
+
 footer div:nth-last-of-type(1)>form input[type=submit] {
+    /* create specific height for the submit botton */
     width: 50%;
 }
 
 /* ======================
-         logo icon
+      left logo nav
 ========================*/
 #menu {
     position: absolute;
@@ -289,9 +284,8 @@ footer div:nth-last-of-type(1)>form input[type=submit] {
     font-size: 1vw;
 }
 
-
 /* ======================
-           menus
+       hambuger menu
 ========================*/
 body>div:nth-of-type(2) {
     position: fixed;
@@ -328,6 +322,7 @@ body>div:nth-of-type(2)>div>nav span {
     font-size: 0.75vw;
 }
 
+/* make font appear bigger when hover*/
 body>div:nth-of-type(2)>div>nav>button:hover {
     text-indent: 1rem;
     transition-duration: 1s;
@@ -344,7 +339,6 @@ body>div:nth-of-type(2)>div {
     grid-template-rows: 1fr 8fr;
 
 }
-
 
 /* ======================
        zoom in or out
@@ -402,6 +396,7 @@ body>button:nth-last-of-type(1)>span {
     text-shadow: 2px 2px 4px #5e5d5dcf;
 }
 
+/* make a natural illusion of the music bar */
 body>button:nth-last-of-type(1)>span:nth-of-type(2) {
     animation-delay: -2.2s;
 }
@@ -410,7 +405,7 @@ body>button:nth-last-of-type(1)>span:nth-of-type(3) {
     animation-delay: -3.7s;
 }
 
-
+/* music bar animation */
 @keyframes move {
     10% {
         transform: scaleY(0.3);
@@ -500,24 +495,13 @@ article {
     max-width: 100vw;
 }
 
-#start *,
-#beans h1,
-#brewing h1,
-#cafes h1,
-#game h1,
-aside h1,
-h2 {
+#start *,#beans h1,#brewing h1,#cafes h1,#game h1,aside h1,h2 {
     text-align: center;
     font-family: Kind_Avenue;
 }
 
-#beans,
-#brewing,
-#cafes,
-#game,
-#beans>div>p:nth-of-type(2),
-#brewing>div>p:nth-of-type(2),
-#cafes>div>p:nth-of-type(2),
+/* hide */
+#beans,#brewing,#cafes,#game,#beans>div>p:nth-of-type(2),#brewing>div>p:nth-of-type(2),#cafes>div>p:nth-of-type(2),
 #beans>section:nth-of-type(1)>div>div:nth-of-type(3)>ol>li:nth-last-of-type(1),
 #beans>section:nth-of-type(1)>div>div:nth-of-type(3)>ol>li:nth-last-of-type(2),
 #beans>section:nth-of-type(1)>div>div:nth-of-type(3)>ol>li:nth-last-of-type(3),
@@ -525,20 +509,14 @@ h2 {
     display: none;
 }
 
-#beans>div>h1,
-#brewing>div>h1,
-#cafes>div>h1,
-#game h1 {
+#beans>div>h1,#brewing>div>h1,#cafes>div>h1,#game h1 {
     grid-row: 1;
     font-size: 10vw;
     align-self: end;
 }
 
-#beans>div>p,
-#brewing>div>p:nth-of-type(1),
-#brewing>div>p:nth-of-type(2),
-#cafes>div>p:nth-of-type(2),
-#cafes>div>p:nth-of-type(1) {
+#beans>div>p,#brewing>div>p:nth-of-type(1),#brewing>div>p:nth-of-type(2),
+#cafes>div>p:nth-of-type(2),#cafes>div>p:nth-of-type(1) {
     grid-row: 2;
     text-align: center;
 }
@@ -579,18 +557,15 @@ h2 {
     transition-duration: 1s;
 }
 
-
 /* ======================
         bean section
 ========================*/
-
 #beans {
     background-color: #462123;
     grid-row: 2;
 }
 
-#beans h2,
-#brewing h2 {
+#beans h2, #brewing h2 {
     font-size: 3.5vw;
     align-self: center;
 }
@@ -606,6 +581,7 @@ h2 {
     max-width: 100vw;
 }
 
+/* bean nav */
 #beans>div>div:nth-of-type(1) {
     grid-row: 3;
     display: grid;
@@ -618,8 +594,7 @@ h2 {
     font-size: 1.5vw;
 }
 
-#beans>section,
-#brewing>section {
+#beans>section, #brewing>section {
     min-height: 100vh;
     display: none;
     position: relative;
@@ -755,7 +730,6 @@ h2 {
     padding: 1rem;
 }
 
-
 #brewing>section>h2 {
     grid-row: 1;
     grid-column: 1/span 3;
@@ -791,7 +765,7 @@ h2 {
     min-height: 100vh;
     background: linear-gradient(rgba(70, 33, 35, 0.35), rgba(70, 33, 35, 0.35)),
         url('images/background1.jpg');
-        /* url('../images/background1.jpg'); */
+    /* url('../images/background1.jpg'); */
     background-size: inherit;
     background-position: center center;
 }
@@ -911,6 +885,17 @@ h2 {
     padding: 1rem;
 }
 
+#cafes iframe {
+    width: 80%;
+    height: auto;
+    border: 0;
+    border-radius: 3rem;
+    padding: 1rem;
+}
+
+/* ======================
+         ccs tile
+========================*/
 .Logo {
     width: 100px;
     height: 100px;
@@ -932,14 +917,6 @@ h2 {
 
 .fb {
     background-position: -200px 0;
-}
-
-#cafes iframe {
-    width: 80%;
-    height: auto;
-    border: 0;
-    border-radius: 3rem;
-    padding: 1rem;
 }
 
 /* ======================
@@ -1139,6 +1116,7 @@ h2 {
     align-items: start;
     grid-column: 1;
     grid-row: 4;
+    font-size: 2.5vw;
 }
 
 #game>div>aside:nth-of-type(1)>img {
@@ -1150,6 +1128,7 @@ h2 {
     text-align: left;
     grid-column: 3;
     grid-row: 4;
+    font-size: 2.5vw;
 }
 
 /* start/restart button */
@@ -1191,14 +1170,10 @@ h2 {
 }
 
 /* ======================
-          others
+    others:display none
 ========================*/
-#menu,
-body>div:nth-of-type(2),
-#zoomIn_Out,
-main,
-footer,
-#musicBar {
+
+#menu,body>div:nth-of-type(2),#zoomIn_Out,main,footer,#musicBar {
     display: none;
 }
 
@@ -1208,8 +1183,8 @@ footer,
 @media screen and (max-width: 800px) {
 
     /* ======================
-           aside
-========================*/
+                aside
+    ========================*/
     body>aside>div>h1 {
         font-size: 7.5vw;
     }
@@ -1225,8 +1200,8 @@ footer,
     }
 
     /* ======================
-    hambuger menu
-========================*/
+          hambuger menu
+    ========================*/
     #menu * {
         font-size: 3vw;
     }
@@ -1250,8 +1225,8 @@ footer,
     }
 
     /* ======================
-        home page
-========================*/
+            home page
+    ========================*/
     #start {
         padding: 3rem 0rem;
     }
@@ -1276,12 +1251,9 @@ footer,
     }
 
     /* ======================
-          beans
-========================*/
-    #beans>div>h1,
-    #brewing>div>h1,
-    #cafes>div>h1,
-    #game>h1 {
+               beans
+    ========================*/
+    #beans>div>h1, #brewing>div>h1,#cafes>div>h1,#game>h1 {
         font-size: 20vw;
     }
 
@@ -1298,9 +1270,7 @@ footer,
         font-size: 7vw;
     }
 
-    #beans h2,
-    #brewing h2,
-    #cafes>section>h3 {
+    #beans h2,#brewing h2,#cafes>section>h3 {
         font-size: 9vw;
     }
 
@@ -1326,11 +1296,10 @@ footer,
     }
 
     /* ======================
-        brewing
-========================*/
+            brewing
+    ========================*/
 
-    #brewing>div>div:nth-of-type(1),
-    #cafes>div:nth-of-type(1)>div {
+    #brewing>div>div:nth-of-type(1),#cafes>div:nth-of-type(1)>div {
         flex-direction: column;
         flex-wrap: wrap;
         min-height: fit-content;
@@ -1349,9 +1318,7 @@ footer,
         grid-template-rows: auto minmax(2rem, 3.5rem) auto;
     }
 
-    #brewing>section:nth-of-type(1),
-    #brewing>section:nth-of-type(2),
-    #brewing>section:nth-of-type(3) {
+    #brewing>section:nth-of-type(1),#brewing>section:nth-of-type(2),#brewing>section:nth-of-type(3) {
         grid-template-columns: 1fr;
         grid-template-rows: minmax(3rem, 5rem) repeat(3, auto);
         padding: 1rem;
@@ -1381,6 +1348,9 @@ footer,
         width: 50%;
     }
 
+    /* ======================
+              cafes
+    ========================*/
     #cafes>section {
         grid-template-rows: repeat(3, auto);
         grid-template-columns: 1fr;
@@ -1468,6 +1438,9 @@ footer,
         border: 1px solid #eedec0;
     }
 
+    /* ======================
+            footer
+    ========================*/
     footer {
         grid-template-columns: repeat(2, auto);
     }
@@ -1481,6 +1454,9 @@ footer,
         height: auto;
     }
 
+    /* ======================
+               game
+    ========================*/
     #game h2,
     #game>div:nth-last-of-type(2)>h2,
     #game>aside>h2 {
@@ -1512,8 +1488,7 @@ footer,
         border-radius: 1.5rem;
     }
 
-    #game>p,
-    #game>h1 {
+    #game>p,#game>h1 {
         max-width: 100vw;
     }
 
@@ -1551,8 +1526,7 @@ footer,
         width: auto;
     }
 
-    #game>div>aside:nth-of-type(1),
-    #game>div>aside:nth-of-type(2) {
+    #game>div>aside:nth-of-type(1),#game>div>aside:nth-of-type(2) {
         font-size: 4.5vw;
     }
 
@@ -1569,10 +1543,8 @@ footer,
     /* ======================
             display
     ========================*/
-    #beans>div>p:nth-of-type(1),
-    #goIntoLeft,
-    #brewing>div>p:nth-of-type(1),
-    #cafes>div>p:nth-of-type(1),
+    /* HIDE */
+    #beans>div>p:nth-of-type(1),#goIntoLeft,#brewing>div>p:nth-of-type(1),#cafes>div>p:nth-of-type(1),
     #beans>section:nth-of-type(1)>div>div:nth-of-type(3)>ol>li:nth-of-type(1),
     #beans>section:nth-of-type(1)>div>div:nth-of-type(3)>ol>li:nth-of-type(2),
     #beans>section:nth-of-type(1)>div>div:nth-of-type(3)>ol>li:nth-of-type(3),
@@ -1586,14 +1558,12 @@ footer,
     footer>div:nth-of-type(3) {
         display: none;
     }
-
     #zoomIn_Out {
         display: none !important;
     }
 
-    #beans>div>p:nth-of-type(2),
-    #brewing>div>p:nth-of-type(2),
-    #cafes>div>p:nth-of-type(2),
+    /* SHOW */
+    #beans>div>p:nth-of-type(2),#brewing>div>p:nth-of-type(2),#cafes>div>p:nth-of-type(2),
     #beans>section:nth-of-type(1)>div>div:nth-of-type(3)>ol>li:nth-last-of-type(1),
     #beans>section:nth-of-type(1)>div>div:nth-of-type(3)>ol>li:nth-last-of-type(2),
     #beans>section:nth-of-type(1)>div>div:nth-of-type(3)>ol>li:nth-last-of-type(3),

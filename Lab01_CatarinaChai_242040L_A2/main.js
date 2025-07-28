@@ -71,16 +71,16 @@ let index = 0;
 var cafeButton = document.querySelectorAll("#cafes>div>div>button");
 
 // game
-// Change this line:
-var diffIngredientBut = document.querySelectorAll("#game>div:nth-of-type(1)>button");
-var allIngredientList = ["espresso", "water", "milk", "foam", "ice", "rubbish"];
 var Timer = 60;
 var Score = 0;
 var addedCounter = 0;
-var Added = ["none", "none", "none"];
-var createButton = document.querySelector("#game>div:nth-of-type(1)>div>button");
-var IngrendientAddDiv = document.querySelectorAll("#game>div:nth-of-type(1)>div:nth-last-of-type(1)>div");
 var success = false;
+var makeThis = 0;
+var recipePgCounter = 0;
+var gameStarted = false;
+var countDownTimer;
+
+//the ingredients needed to make the drink
 const recipe = [
     ["espresso"],//espresso
     ["espresso", "water"],//americano
@@ -89,23 +89,26 @@ const recipe = [
     ["espresso", "milk", "ice"],//ice latte
     ["espresso", "milk", "foam"]//cappuchino
 ];
+var allIngredientList = ["espresso", "water", "milk", "foam", "ice", "rubbish"];
+var Added = ["none", "none", "none"];
 
-var makeThis = 0;
+var diffIngredientBut = document.querySelectorAll("#game>div:nth-of-type(1)>button");
+var createButton = document.querySelector("#game>div:nth-of-type(1)>div>button");
+var IngrendientAddDiv = document.querySelectorAll("#game>div:nth-of-type(1)>div:nth-last-of-type(1)>div");
 var gameDiv = document.querySelector("#game>div:nth-of-type(1)");
 var customerHead = document.querySelector("#game>div:nth-of-type(1)>div:nth-of-type(2)");
 var drinks = ["espresso", "hotAmericano", "iceAmericano", "hotLatte", "iceLatte", "hotCappuccino"];
 var customer = document.querySelector("#game>div:nth-of-type(1)>div:nth-of-type(1)>img");
-var recipePgCounter = 0;
 var recipePgImg = document.querySelector("#game>aside>div>div>img");
 var updateCountDown = document.querySelector("#game>div>aside:nth-of-type(2)");
 var updateCustomer = document.querySelector("#game>div>aside:nth-of-type(1)>span");
-var gameStarted = false;
-var countDownTimer;
 var startGameButton = document.querySelector("#game>div:nth-last-of-type(1)>button:nth-of-type(1)");
 var restartGameButton = document.querySelector("#game>div:nth-last-of-type(1)>button:nth-of-type(2)");
 /* ======================
         FUNCTIONS
 ========================*/
+
+// function that hide everything
 function hideAll() {
     //go through all section to hide the lise
     for (let oneSec of sectionList) {
@@ -121,6 +124,7 @@ function hideAll() {
     recipePgImg.src = "images/recipe" + recipePgCounter + ".jpg";
 }
 
+//function that show specific pg
 function show(idName, displayType) {
     hideAll();
     let _section = document.querySelector("#" + idName);
@@ -130,6 +134,7 @@ function show(idName, displayType) {
     }
 }
 
+//function that show specific section of a pg
 function showOtherSection(sectionID, idName, displayType, buttonSide) {
     if (buttonSide == "left") {
         sectionID--;
@@ -148,6 +153,7 @@ function showOtherSection(sectionID, idName, displayType, buttonSide) {
     _sectionName.style.display = displayType;
 }
 
+//make screen full screen
 function fullScreen() {
     if (document.documentElement.clientWidth <= 800) {
     console.log("shld be full screen");
@@ -164,6 +170,7 @@ function fullScreen() {
     }
 }
 
+//exit full screen
 function exitFullScreen() {
     if (document.exitFullScreen) {
         document.exitFullscreen();
@@ -176,6 +183,7 @@ function exitFullScreen() {
     }
 }
 
+//check if its enter or exit full screen
 function canFullScreenOrOpp() {
     var changeZoomLogo = zoomIn_OutButton.getElementsByTagName("img")[0];
     if (!inFullScreen) {
@@ -194,6 +202,7 @@ function canFullScreenOrOpp() {
     }
 }
 
+//open hambuger menu
 function openMenu() {
     menuOpen = true;
     hambugerMenu.style.display = "none";
@@ -213,6 +222,7 @@ function openMenu() {
     }, 10);
 }
 
+//close hambuger menu
 function closeMenu() {
     menuOpen = false;
     closeButton.style.display = "none";
@@ -226,13 +236,15 @@ function closeMenu() {
 
 function updateBeanButtons(array) {
     let current = beansCounter; // current right-side index
-    let prev = (current - 1 + array.length) % array.length;
+    let prev = (current - 1 + array.length) % array.length;//get previous index
     if (document.documentElement.clientWidth > 800) {
+        //mobile feature
         leftData.innerText = array[prev];
     }
     rightData.innerText = array[current];
 }
 
+//see next in line date
 function goRight(array) {
     beansCounter = (beansCounter + 1) % array.length;
     updateBeanButtons(array);
@@ -241,6 +253,7 @@ function goRight(array) {
     }
 }
 
+//see previous date
 function goLeft(array) {
     beansCounter = (beansCounter - 1 + array.length) % array.length;
     updateBeanButtons(array);
@@ -249,12 +262,14 @@ function goLeft(array) {
     }
 }
 
+//auto play music
 function autoPlay() {
     if (bgm.paused) {
         bgm.play();
     }
 }
 
+//allow play or stop music function
 function musicController() {
     if (musicPlaying) {
         musicStop();
@@ -264,6 +279,7 @@ function musicController() {
     }
 }
 
+//stop music function
 function musicStop() {
     bgm.muted = true;
     musicPlaying = false;
@@ -274,6 +290,7 @@ function musicStop() {
     }
 }
 
+//start music function
 function musicStart() {
     bgm.muted = false;
     musicPlaying = true;
@@ -285,6 +302,7 @@ function musicStart() {
     }
 }
 
+//randomise pos 
 function randomiseLocation() {
     //creating animation using css position
     const maxLeft = container.clientWidth - noButton.offsetWidth;
@@ -297,6 +315,7 @@ function randomiseLocation() {
     noButton.style.top = _top + "px";
 }
 
+//if player pressed the no button when first arrived in this pg
 function rejectNo() {
     randomiseLocation();
     if (noAvoidedCounter == 0) {
@@ -342,6 +361,7 @@ function rejectNo() {
     noAvoidedCounter++;
 }
 
+//start show main home screen
 function enterWeb() {
     enterPg.style.display = "none";
     var logoMenu = document.getElementById("menu");
@@ -356,6 +376,7 @@ function enterWeb() {
 
 }
 
+//show behind of card
 function showBacking(_whichContent) {
     var contentH3 = _whichContent.querySelector("h3");
     var contentImg = _whichContent.querySelector("img");
@@ -365,6 +386,7 @@ function showBacking(_whichContent) {
     contentOl.style.display = "block";
 }
 
+//show front of card
 function showFront(_whichContent) {
     var contentH3 = _whichContent.querySelector("h3");
     var contentImg = _whichContent.querySelector("img");
@@ -374,11 +396,13 @@ function showFront(_whichContent) {
     contentOl.style.display = "none";
 }
 
+//rotate img
 function rotateThis(_img, pointWhere) {
     const rotateAngle = ["315deg", "45deg", "225deg", "135deg", "0deg"];
     _img.style.transform = "rotate(" + rotateAngle[pointWhere] + ")";
 }
 
+//a simple auto slide show of img 
 function changeBg() {
     cafeDiv.style.background = "linear-gradient(rgba(70, 33, 35, 0.35), rgba(70, 33, 35, 0.35)), url('" + cafesBackgrounds[index] + "')";
     cafeDiv.style.backgroundSize = "inherit";
@@ -386,10 +410,14 @@ function changeBg() {
     index = (index + 1) % cafesBackgrounds.length;
 }
 
+//move obj
 function moveThis(_img, whichRow) {
     _img.style.gridRow = whichRow;
 }
 
+//for the game
+
+//add ingredient
 function ingredientAdded(whichOne) {
     if (whichOne == diffIngredientBut.length - 1) {
         // This is the rubbish/clear button
@@ -415,7 +443,7 @@ function ingredientAdded(whichOne) {
     }
 }
 
-
+//check if player make the drink correctly
 function createDrink() {
     var checked = new Array(recipe[makeThis].length).fill(false);
     var checkedCounter = 0;
@@ -458,6 +486,7 @@ function createDrink() {
     }, 1000);
 }
 
+//change customer n drink order
 function newCustomer() {
     // reset everything 
     for (let i = 0; i < IngrendientAddDiv.length; i++) {
@@ -477,6 +506,7 @@ function newCustomer() {
 
 }
 
+//move to the next recipe
 function recipeRight() {
     recipePgCounter++;
     if (recipePgCounter >= drinks.length) {
@@ -485,6 +515,7 @@ function recipeRight() {
     recipePgImg.src = "images/recipe" + recipePgCounter + ".jpg";
 }
 
+//move to the prev recipe
 function recipeLeft() {
     recipePgCounter--;
     if (recipePgCounter < 0) {
@@ -493,6 +524,7 @@ function recipeLeft() {
     recipePgImg.src = "images/recipe" + recipePgCounter + ".jpg";
 }
 
+//restart game
 function restartGame() {
     gameStarted = false;
     // reset everything 
@@ -511,6 +543,7 @@ function restartGame() {
 
 }
 
+// form
 //validate email
 function validEmail(email) {
     const matchThis = /\S+@\S+\.\S+/;
@@ -631,6 +664,7 @@ for (let i = 0; i < cafeButton.length; i++) {
         showOtherSection(i, "cafes", "grid", "right");
     });
 }
+
 // game
 for (let i = 0; i < diffIngredientBut.length; i++) {
     diffIngredientBut[i].addEventListener("click", function () {
@@ -660,11 +694,13 @@ rightArrowButton[1].addEventListener("click", function () {
 leftArrowButton[1].addEventListener("click", function () {
     recipeLeft();
 });
+
 startGameButton.addEventListener("click", function () {
     gameStarted = true;
     alert("Your shift has started! What are you waiting for?");
     startCountdown();
 });
+
 restartGameButton.addEventListener("click", function () {
     restartGame();
     alert("The day has restarted! Press start to begin your shift!");
@@ -672,8 +708,10 @@ restartGameButton.addEventListener("click", function () {
 /* ======================
         Interval
 ========================*/
+//change bg for cafe every 3.5s
 setInterval(changeBg, 3500);
 
+//interval for the game duration
 function startCountdown() {
     countDownTimer = setInterval(function () {
         updateCountDown.innerHTML = " &#128345; Time Left: " + Timer;
@@ -698,8 +736,9 @@ for (var i = 0; i < rows; i++) {
     }
     backingShown.push(row);
 }
-// This creates a 4x4 grid filled with true
+//create a 4x4 grid filled with true
 
+//when its in mobile mode
 if (document.documentElement.clientWidth <= 800) {
     document.addEventListener("touchstart", function () {fullScreen();});
     document.addEventListener("click", function () {fullScreen();});
@@ -789,6 +828,7 @@ if (document.documentElement.clientWidth <= 800) {
     }
 }
 else {
+    //in DESKTOP MODE
     zoomIn_OutButton.addEventListener("click", function () {
         canFullScreenOrOpp();
     });
@@ -873,6 +913,7 @@ else {
         });
     }
 }
+
 //brewing
 for (let i = 0; i < diffBrewButton.length; i++) {
 
